@@ -25,6 +25,7 @@ do_configure_prepend () {
 
 PROVIDES = "${PACKAGES}"
 PACKAGES = " \
+    ${PN} \
     ${PN}-dbg \
     libtss2 \
     libtss2-dev \
@@ -37,7 +38,8 @@ PACKAGES = " \
     libtctisocket-staticdev \
     resourcemgr \
 "
-
+# Set tpm2.0-tss files to nothing, this helps avoid systemd.bbclass package error when including packagegroup-security-tpm
+FILES_${PN} = ""
 FILES_libtss2 = "${libdir}/libsapi.so.0.0.0"
 FILES_libtss2-dev = " \
     ${includedir}/sapi \
