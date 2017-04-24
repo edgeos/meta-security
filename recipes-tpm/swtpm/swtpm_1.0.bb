@@ -3,7 +3,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=fe8092c832b71ef20dfe4c6d3decb3a8"
 SECTION = "apps"
 
-DEPENDS = "libtasn1 fuse expect socat glib-2.0 libtpm libtpm-native"
+DEPENDS = "libtasn1 fuse expect expect-native socat glib-2.0 libtpm libtpm-native tpm-tools-native"
 
 SRCREV = "2cd10cee2f74c84bda22081514b6b2cb566fa42d"
 SRC_URI = "git://github.com/stefanberger/swtpm.git \
