@@ -7,7 +7,9 @@ DEPENDS = "libtasn1 fuse expect expect-native socat glib-2.0 libtpm libtpm-nativ
 
 SRCREV = "2cd10cee2f74c84bda22081514b6b2cb566fa42d"
 SRC_URI = "git://github.com/stefanberger/swtpm.git \
-	   file://fix_lib_search_path.patch"
+	   file://fix_lib_search_path.patch \
+           ${@bb.utils.contains('TARGET_ARCH','arm','file://arm_werror_config.patch','',d)} \
+          "
 
 S = "${WORKDIR}/git"
 
