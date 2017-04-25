@@ -41,6 +41,7 @@ do_configure() {
 do_install_append () {
    # remove python dir, its not used or installed
    rm -fr ${D}/${libdir}
+   rm -fr ${D}/${nonarch_libdir}
 }
 
 PACKAGES += "${@bb.utils.contains('PACKAGECONFIG', 'zenmap', '${PN}-zenmap', '', d)}"
