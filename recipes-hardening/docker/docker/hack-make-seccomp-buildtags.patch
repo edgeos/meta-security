@@ -1,0 +1,13 @@
+diff --git a/hack/make.sh b/hack/make.sh
+index c52e634f9..042e3a34e 100755
+--- a/hack/make.sh
++++ b/hack/make.sh
+@@ -142,6 +142,8 @@ if [ -z "$DOCKER_DEBUG" ]; then
+        LDFLAGS='-w'
+ fi
+ 
++DOCKER_BUILDTAGS+=" seccomp"
++
+ LDFLAGS_STATIC=''
+ EXTLDFLAGS_STATIC='-static'
+ # ORIG_BUILDFLAGS is necessary for the cross target which cannot always build
