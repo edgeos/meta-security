@@ -1,0 +1,67 @@
+diff --git a/checksec b/checksec
+index 150b2bc..e3df5c5 100755
+--- a/checksec
++++ b/checksec
+@@ -552,7 +552,7 @@ kernelcheck() {
+   $debug && echo "$($kconfig | grep "CONFIG_PAX")"
+ 
+   echo_message "  Vanilla Kernel ASLR:   		  " "" "" ""
+-  randomize_va=$(sysctl -b -e kernel.randomize_va_space)
++  randomize_va=$(sysctl -n -e kernel.randomize_va_space)
+   if [[ "x$randomize_va" == "x2" ]]; then
+     echo_message "\033[32mFull\033[m\n" "Full," " randomize_va_space='full'" '"randomize_va_space":"full",'
+   elif [[ "x$randomize_va" == "x1" ]]; then
+@@ -562,7 +562,7 @@ kernelcheck() {
+   fi
+ 
+   echo_message "  Protected symlinks:   		  " "" "" ""
+-  symlink=$(sysctl -b -e fs.protected_symlinks)
++  symlink=$(sysctl -n -e fs.protected_symlinks)
+   if [[ "x$symlink" == "x1" ]]; then
+     echo_message "\033[32mEnabled\033[m\n" "Enabled," " protect_symlinks='yes'" '"protect_symlinks":"yes",'
+   else
+@@ -570,7 +570,7 @@ kernelcheck() {
+   fi
+ 
+   echo_message "  Protected hardlinks:   		  " "" "" ""
+-  hardlink=$(sysctl -b -e fs.protected_hardlinks)
++  hardlink=$(sysctl -n -e fs.protected_hardlinks)
+   if [[ "x$hardlink" == "x1" ]]; then
+     echo_message "\033[32mEnabled\033[m\n" "Enabled," " protect_hardlinks='yes'" '"protect_hardlinks":"yes",'
+   else
+@@ -578,7 +578,7 @@ kernelcheck() {
+   fi
+ 
+   echo_message "  Ipv4 reverse path filtering: 		  " "" "" ""
+-  ipv4_rpath=$(sysctl -b -e net.ipv4.conf.all.rp_filter)
++  ipv4_rpath=$(sysctl -n -e net.ipv4.conf.all.rp_filter)
+   if [[ "x$ipv4_rpath" == "x1" ]]; then
+     echo_message "\033[32mEnabled\033[m\n" "Enabled," " ipv4_rpath='yes'" '"ipv4_rpath":"yes",'
+   else
+@@ -586,7 +586,7 @@ kernelcheck() {
+   fi
+ 
+   echo_message "  Ipv6 reverse path filtering: 		  " "" "" ""
+-  ipv6_rpath=$(sysctl -b -e net.ipv6.conf.all.rp_filter)
++  ipv6_rpath=$(sysctl -n -e net.ipv6.conf.all.rp_filter)
+   if [[ "x$ipv6_rpath" == "x1" ]]; then
+     echo_message "\033[32mEnabled\033[m\n" "Enabled," " ipv6_rpath='yes'" '"ipv6_rpath":"yes",'
+   else
+@@ -917,7 +917,7 @@ fi
+     fi
+ 
+     echo_message "  Pax softmode:                           " "" "" ""
+-    paxsoft=$(sysctl -b -e kernel.pax.softmode)
++    paxsoft=$(sysctl -n -e kernel.pax.softmode)
+     if [[ "x$paxsoft" == "x1" ]]; then
+       echo_message "\033[31mEnabled\033[m\n" "Enabled" " pax_softmode='yes'" '"pax_softmode":"yes" },'
+     else
+@@ -934,7 +934,7 @@ fi
+         else
+           echo_message "    grsecurity.$command:\t\t  " "" "" ""
+         fi
+-        grcheck=$(sysctl -b kernel.grsecurity.$command 2>/dev/null || echo $?)
++        grcheck=$(sysctl -n kernel.grsecurity.$command 2>/dev/null || echo $?)
+         if [[ "x$grcheck" != "x255" ]] && [[ "x$grcheck" != "x0" ]]; then
+           echo_message "\033[32mEnabled\033[m\n" "Enabled," " grsec_sysctl_$command='yes'" "\"grsec_sysctl_$command\":\"yes\""
+         else

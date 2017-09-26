@@ -1,0 +1,13 @@
+diff --git a/checksec b/checksec
+index 150b2bc..cc5e2a5 100755
+--- a/checksec
++++ b/checksec
+@@ -626,7 +626,7 @@ kernelcheck() {
+   echo_message "  Hardened Usercopy:                      " "" "" ""
+   if $kconfig | grep -qi 'CONFIG_HARDENED_USERCOPY=y'; then
+     echo_message "\033[32mEnabled\033[m\n" "Enabled," " hardened_usercopy='yes'" '"hardened_usercopy":"yes",'
+-    echo_message "  Hardened Usercopy Pagespan:           " "" "" ""
++    echo_message "  Hardened Usercopy Pagespan:             " "" "" ""
+     if $kconfig | grep -qi 'CONFIG_HARDENED_USERCOPY_PAGESPAN=y'; then
+       echo_message "\033[32mEnabled\033[m\n" "Enabled," " hardened_usercopy_pagespan='yes'" '"hardened_usercopy_pagespan":"yes",'
+     else
