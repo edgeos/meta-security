@@ -1,7 +1,7 @@
 SUMMARY = "LIBPM - Software TPM Library"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=97e5eea8d700d76b3ddfd35c4c96485f"
-SRCREV = "e5dc628043e981c9f8d7711ddfe5812c8f4e38cc"
+SRCREV = "9649f4b866ea8c3c4c778d80d6751b1116be7a90"
 SRC_URI = "git://github.com/stefanberger/libtpms.git"
 
 S = "${WORKDIR}/git"
