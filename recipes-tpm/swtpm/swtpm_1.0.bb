@@ -5,9 +5,8 @@ SECTION = "apps"
 
 DEPENDS = "libtasn1 fuse expect expect-native socat glib-2.0 libtpm libtpm-native tpm-tools-native"
 
-SRCREV = "2cd10cee2f74c84bda22081514b6b2cb566fa42d"
+SRCREV = "66250d635a2e91a87403d50bc868da471a1e1bbb"
 SRC_URI = "git://github.com/stefanberger/swtpm.git \
-	   file://fix_lib_search_path.patch \
            ${@bb.utils.contains('TARGET_ARCH','arm','file://arm_werror_config.patch','',d)} \
           "
 
@@ -27,7 +26,7 @@ PACKAGECONFIG[selinux] = "--with-selinux, --without-selinux, libselinux"
 
 EXTRA_OECONF += "--with-tss-user=${TSS_USER} --with-tss-group=${TSS_GROUP}"
 
-export SEARCH_DIR = "${STAGING_LIBDIR_NATIVE}"
+export LIBRARY_PATH = "${STAGING_LIBDIR_NATIVE}"
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "--system ${TSS_USER}"
