@@ -9,7 +9,7 @@ DEPENDS = "autoconf-archive pkgconfig"
 SRCREV = "d1bd1fe175d233c7c5adbe1b9f3d256c41721001"
 
 SRC_URI = " \
-    git://github.com/01org/TPM2.0-TSS.git;protocol=git;branch=master;name=TPM2.0-TSS;destsuffix=TPM2.0-TSS \
+    git://github.com/01org/tpm2-tss.git;protocol=git;branch=master;name=TPM2.0-TSS;destsuffix=TPM2.0-TSS \
     file://ax_pthread.m4 \
     file://musl_header_fix.patch \
 "
